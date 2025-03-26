@@ -30,6 +30,27 @@ void ClapTrap::takeDamage(unsigned int amount)
 	std::cout << this->name << " got hit losing " << amount << " hitPoints" << std::endl;
 }
 
+
+ClapTrap::ClapTrap(const ClapTrap& copy)
+{
+	name = copy.name;
+	hitPoints = copy.hitPoints;
+	energyPoints = copy.energyPoints;
+	attackPoints = copy.attackPoints;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& copy)
+{
+	if (this != &copy)
+	{
+		name = copy.name;
+		hitPoints = copy.hitPoints;
+		energyPoints = copy.energyPoints;
+		attackPoints = copy.attackPoints;
+	}
+	return *this;
+}
+
 // std::string ClapTrap::getName()
 // {
 // 	return this->name;
