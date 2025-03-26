@@ -1,19 +1,27 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap (std::string name) : ClapTrap(name)
 {
-	this->hitPoints = 100;
-	this->energyPoints = 50;
-	this->attackPoints = 20;
-    std::cout << "ScavTrap default constructor\n";
-};
+	std::cout << "ScavTrap def constructor " << name << std::endl;
+	hitPoints = 100;
+	energyPoints = 50;
+	attackPoints = 20;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& copy): ClapTrap(copy)
+{
+	std::cout << "ScavTrap copy constructor " << copy.name << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& copy)
+{
+	if (this != &copy)
+		ClapTrap::operator=(copy);
+	std::cout << "ScavTrap copy assingment operator " << name << std::endl;
+	return *this;
+}
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "ScavTrap destructor\n";
-};
-
-void ScavTrap::guardGate()
-{
-    std::cout << "ScavTrap is now in Gate keeper mode" << std::endl;
+	std::cout << "ScavTrap destructor " << name << std::endl;
 }
